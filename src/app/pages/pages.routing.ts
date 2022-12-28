@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const PagesRoutes: Routes = [
   {
@@ -14,6 +15,10 @@ export const PagesRoutes: Routes = [
         path: 'login',
         component: LoginComponent,
         // canActivate: [LoginGuard]
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
     ],
   },

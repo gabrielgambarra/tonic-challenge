@@ -5,6 +5,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagesComponent } from './pages/pages.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app-routing.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BaseURLInterceptor } from './services/BaseURLInterceptor';
 
 @NgModule({
   declarations: [AppComponent, PagesComponent],
@@ -12,8 +15,19 @@ import { AppRoutes } from './app-routing.module';
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BaseURLInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
