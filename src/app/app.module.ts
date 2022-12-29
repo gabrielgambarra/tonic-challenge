@@ -8,9 +8,10 @@ import { AppRoutes } from './app-routing.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseURLInterceptor } from './services/BaseURLInterceptor';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
-  declarations: [AppComponent, PagesComponent],
+  declarations: [AppComponent, PagesComponent, HomepageComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
