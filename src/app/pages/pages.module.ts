@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -19,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatToolbarModule,
   ],
 })
 export class PagesModule {}

@@ -39,9 +39,15 @@ body {
   background: #8f8f8f;
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 24px;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 a {
@@ -58,7 +64,7 @@ mat-form-field {
 }
 
 .page-container {
-  height: 100vh;
+  height: 88vh;
   min-width: 100%;
   display: flex;
   align-items: center;
@@ -74,6 +80,9 @@ mat-form-field {
 }
 
 @media only screen and (min-width: 500px) {
+  .page-container {
+    height: 94vh;
+  }
   mat-card {
     max-width: 50%;
   }

@@ -9,6 +9,10 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseURLInterceptor } from './services/BaseURLInterceptor';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent, PagesComponent, HomepageComponent],
@@ -17,6 +21,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     RouterModule.forRoot(AppRoutes),
     BrowserAnimationsModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [
     {
@@ -27,6 +34,10 @@ import { HomepageComponent } from './components/homepage/homepage.component';
       provide: HTTP_INTERCEPTORS,
       useClass: BaseURLInterceptor,
       multi: true,
+    },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { autoFocus: false, maxWidth: '80vw' },
     },
   ],
   bootstrap: [AppComponent],
