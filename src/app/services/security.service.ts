@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginResponse } from '../providers/models/LoginResponse.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SecurityService {
-  constructor() {}
+  constructor(private route: Router) {}
 
   public isAuthenticated(): boolean {
     if (localStorage.getItem('auth')) {
@@ -17,9 +18,11 @@ export class SecurityService {
 
   public login(userData: LoginResponse): void {
     localStorage.setItem('auth', JSON.stringify(userData.token));
+    this.route.navigate(['/']);
   }
 
   public logout(): void {
     localStorage.removeItem('auth');
+    this.route.navigate(['/']);
   }
 }
