@@ -12,6 +12,7 @@ export class HomepageComponent implements OnInit {
     private router: Router,
     private securityService: SecurityService
   ) {}
+
   ngOnInit() {
     if (this.securityService.isAuthenticated()) {
       this.router.navigate(['/list']);

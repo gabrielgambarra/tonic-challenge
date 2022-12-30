@@ -1,5 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Login } from 'src/app/providers/models/Login.model';
 import { LoginService } from 'src/app/services/login.service';
 import { SecurityService } from 'src/app/services/security.service';
@@ -12,7 +11,6 @@ import { Form } from 'src/app/utils/form';
 })
 export class LoginComponent extends Form<Login> {
   constructor(
-    private route: Router,
     private loginService: LoginService,
     private securityService: SecurityService
   ) {
@@ -23,7 +21,6 @@ export class LoginComponent extends Form<Login> {
     this.loginService.login(this.obj).subscribe(
       (res) => {
         this.securityService.login(res);
-        this.route.navigate(['/']);
       },
       ({ error }) => {
         console.log(error);

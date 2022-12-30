@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { LoginResponse } from '../providers/models/LoginResponse.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SecurityService {
-  constructor() {}
+  showLogoutButtonChange: Subject<boolean> = new Subject<boolean>();
+  showLogoutButton: boolean = false;
 
-  public isAuthenticated(): boolean {
+  constructor(private route: Router) {
+    this.showLogoutButtonChange.subscribe((value) => {
+      console.log('showLogoutButtonChange', value);
+    });
+  }
+
+  public isAuthenticated() {
     if (localStorage.getItem('auth')) {
       return true;
     }
@@ -17,9 +26,13 @@ export class SecurityService {
 
   public login(userData: LoginResponse): void {
     localStorage.setItem('auth', JSON.stringify(userData.token));
+    this.showLogoutButton = true;
+    this.showLogoutButtonChange.next(this.showLogoutButton);
+    this.route.navigate(['/']);
   }
 
   public logout(): void {
     localStorage.removeItem('auth');
+    this.route.navigate(['/']);
   }
 }

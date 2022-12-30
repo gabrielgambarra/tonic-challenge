@@ -1,8 +1,10 @@
 <mat-toolbar color="primary">
   <span>Tonic App Challenge</span>
-  <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>logout</mat-icon>
-  </button>
+  <ng-template [ngIf]="showLogoutButton">
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="doLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>
 <router-outlet></router-outlet>
