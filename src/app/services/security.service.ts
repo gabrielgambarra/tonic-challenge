@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoginResponse } from '../providers/models/LoginResponse.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,10 @@ export class SecurityService {
     }
 
     return false;
+  }
+
+  public login(userData: LoginResponse): void {
+    localStorage.setItem('auth', JSON.stringify(userData.token));
   }
 
   public logout(): void {
