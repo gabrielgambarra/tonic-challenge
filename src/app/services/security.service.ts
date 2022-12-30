@@ -12,7 +12,7 @@ export class SecurityService {
 
   constructor(private route: Router) {
     this.showLogoutButtonChange.subscribe((value) => {
-      console.log('showLogoutButtonChange', value);
+      this.showLogoutButton = value;
     });
   }
 
