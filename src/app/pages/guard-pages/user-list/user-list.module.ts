@@ -12,6 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CreateEditModalModule } from 'src/app/components/create-edit-modal/create-edit-modal.module';
 import { DeleteUserModalModule } from 'src/app/components/delete-user-modal/delete-user-modal.module';
 import { UserInfoModule } from 'src/app/components/user-info/user-info.module';
+import { TableModule } from 'src/app/components/table/table.module';
 
 @NgModule({
   declarations: [UserListComponent],
@@ -27,6 +28,7 @@ import { UserInfoModule } from 'src/app/components/user-info/user-info.module';
     CreateEditModalModule,
     DeleteUserModalModule,
     UserInfoModule,
+    TableModule,
   ],
 })
 export class UserListModule {}

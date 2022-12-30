@@ -18,6 +18,7 @@ export class UserListComponent implements OnInit {
   dataSource = new MatTableDataSource<UserListData>([]);
   page: number = 1;
   total!: number;
+  userData: UserListData[] = [];
 
   constructor(private userService: UserService, public dialog: MatDialog) {}
 
@@ -30,6 +31,7 @@ export class UserListComponent implements OnInit {
       this.page = event.pageIndex + 1;
     }
     this.userService.getAllUsers(this.page).subscribe((data) => {
+      this.userData = data.data;
       this.dataSource = new MatTableDataSource<UserListData>(data.data);
       this.page = data.page;
       this.total = data.total;
@@ -54,6 +56,9 @@ export class UserListComponent implements OnInit {
           this.dataSource.data = this.dataSource.data.map((item) =>
             item.id === element.id ? data : item
           );
+          this.userData = this.userData.map((item) =>
+            item.id === element.id ? data : item
+          );
         });
       }
     });
@@ -68,6 +73,9 @@ export class UserListComponent implements OnInit {
       if (result) {
         this.userService.deleteUserById(element.id).subscribe(() => {
           this.dataSource.data = this.dataSource.data.filter(
+            (item) => item.id !== element.id
+          );
+          this.userData = this.userData.filter(
             (item) => item.id !== element.id
           );
         });
