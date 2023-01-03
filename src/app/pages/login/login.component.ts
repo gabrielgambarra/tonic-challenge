@@ -10,6 +10,8 @@ import { Form } from 'src/app/utils/form';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent extends Form<Login> {
+  loginError!: string;
+
   constructor(
     private loginService: LoginService,
     private securityService: SecurityService
@@ -18,12 +20,14 @@ export class LoginComponent extends Form<Login> {
   }
 
   override submitForm(): void {
+    this.loginError = '';
     this.loginService.login(this.obj).subscribe(
       (res) => {
         this.securityService.login(res);
       },
       ({ error }) => {
         console.log(error);
+        this.loginError = error.error;
       }
     );
   }
