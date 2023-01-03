@@ -25,7 +25,7 @@ export class SecurityService {
   }
 
   public login(userData: LoginResponse): void {
-    localStorage.setItem('auth', JSON.stringify(userData.token));
+    localStorage.setItem('auth', String(userData.token));
     this.showLogoutButton = true;
     this.showLogoutButtonChange.next(this.showLogoutButton);
     this.route.navigate(['/']);
