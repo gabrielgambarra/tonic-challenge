@@ -52,14 +52,12 @@ export class UserListComponent implements OnInit {
 
     editModal.afterClosed().subscribe((result) => {
       if (result) {
-        this.userService.updateUser(element.id, result).subscribe((data) => {
-          this.dataSource.data = this.dataSource.data.map((item) =>
-            item.id === element.id ? data : item
-          );
-          this.userData = this.userData.map((item) =>
-            item.id === element.id ? data : item
-          );
-        });
+        this.dataSource.data = this.dataSource.data.map((item) =>
+          item.id === element.id ? result : item
+        );
+        this.userData = this.userData.map((item) =>
+          item.id === element.id ? result : item
+        );
       }
     });
   }
