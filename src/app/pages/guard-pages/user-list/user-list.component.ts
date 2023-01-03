@@ -40,7 +40,7 @@ export class UserListComponent implements OnInit {
 
   openInfo(element: UserListData): void {
     this.dialog.open(UserInfoComponent, {
-      data: element.id,
+      data: element,
       maxWidth: '80vw',
     });
   }

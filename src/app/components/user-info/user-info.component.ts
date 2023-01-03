@@ -13,7 +13,7 @@ export class UserInfoComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public userId: number,
+    @Inject(MAT_DIALOG_DATA) public data: User,
     private userService: UserService
   ) {}
 
@@ -22,8 +22,13 @@ export class UserInfoComponent implements OnInit {
   }
 
   getUserById() {
-    this.userService.getUserById(this.userId).subscribe((res) => {
-      this.user = res.data;
+    this.userService.getUserById(this.data.id).subscribe((res) => {
+      this.user = {
+        ...res.data,
+        first_name: this.data.first_name,
+        last_name: this.data.last_name,
+        email: this.data.email,
+      };
     });
   }
 }
