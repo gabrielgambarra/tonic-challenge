@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e",
+    "deploy:prod": "ng deploy --base-href=/angular-app/",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
@@ -33,13 +34,14 @@
     "@angular/compiler-cli": "^15.0.0",
     "@cypress/schematic": "^2.4.0",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^1.0.5",
+    "cypress": "latest",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.8.2",
-    "cypress": "latest"
+    "typescript": "~4.8.2"
   }
 }
