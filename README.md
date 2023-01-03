@@ -1,5 +1,7 @@
 # Tonic App Challenge
 
+You can access the live example at [https://gabrielgambarra.github.io/tonic-challenge](https://gabrielgambarra.github.io/tonic-challenge)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
 ## Requirements
